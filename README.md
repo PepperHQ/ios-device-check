@@ -14,14 +14,14 @@ npm install device-check
 const deviceCheck = new DeviceCheck(ApiHost.DEVELOPMENT);
 ```
 
-### Querying device
+### Querying a device
 ```
 try {
     const queryResult = await deviceCheck.QueryDevice({ 
         device_token: 'aDeviceToken',
-        // Optional, will be set as Date.now() if ommitted
+        // Optional, will be set as Date.now() if omitted
         timestamp: Date.now()
-        // Optional, will be set as V4 UUID if ommitted
+        // Optional, will be set as V4 UUID if omitted
         transaction_id: 'aTransactionId'
     });
 } catch (err) {
@@ -35,9 +35,9 @@ try {
 try {
     await deviceCheck.UpdateDevice({ 
         device_token: 'aDeviceToken',
-        // Optional, will be default to Date.now() if ommitted
+        // Optional, will be default to Date.now() if omitted
         timestamp: Date.now()
-        // Optional, will be default to V4 UUID if ommitted
+        // Optional, will be default to V4 UUID if omitted
         transaction_id: 'aTransactionId'
         bit0: true,
         bit1: false
@@ -53,9 +53,9 @@ try {
 try {
     await deviceCheck.ValidateDevice({ 
         device_token: 'aDeviceToken',
-        // Optional, will be default to Date.now() if ommitted
+        // Optional, will be default to Date.now() if omitted
         timestamp: Date.now()
-        // Optional, will be default to V4 UUID if ommitted
+        // Optional, will be default to V4 UUID if omitted
         transaction_id: 'aTransactionId'
     });
 } catch (err) {
