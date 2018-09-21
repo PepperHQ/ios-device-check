@@ -1,1 +1,1 @@
-export * from './deviceCheck';
+export * from './client';

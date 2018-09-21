@@ -57,3 +57,56 @@ export async function QueryDevice(host: string, jwt: string, payload: QueryDevic
 
     return responseBody;
 } 
+
+export interface UpdateDevicePayload extends QueryDevicePayload {
+    bit0: boolean;
+    bit1: boolean;
+}
+
+export async function UpdateDevice(host: string, jwt: string, payload: UpdateDevicePayload): Promise<void> {
+    const url = `https://${host}/v1/update_two_bits`;
+
+    const headers = {
+        Authorization: `Bearer ${jwt}`,
+        'Content-Type':'application/json'
+    }
+
+    const body: UpdateDevicePayload = {
+        device_token: payload.device_token,
+        bit0: payload.bit0,
+        bit1: payload.bit1,
+        transaction_id: payload.transaction_id || uuid(),
+        timestamp: payload.timestamp || Date.now(),
+    };
+
+    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), compress: true });
+
+    if (response.status !== 200) {
+        throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
+    }
+} 
+
+export type ValidateDevicePayload = QueryDevicePayload;
+
+// The documentation is cryptic about what is returned if the token is invalid so we assume any error === invalid 
+// and throw an error if one is returned instead of returning a boolean.
+export async function ValidateDevice(host: string, jwt: string, payload: ValidateDevicePayload): Promise<void> {
+    const url = `https://${host}/v1/validate_device_token`;
+
+    const headers = {
+        Authorization: `Bearer ${jwt}`,
+        'Content-Type':'application/json'
+    }
+
+    const body: ValidateDevicePayload = {
+        device_token: payload.device_token,
+        transaction_id: payload.transaction_id || uuid(),
+        timestamp: payload.timestamp || Date.now()
+    };
+
+    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), compress: true });
+
+    if (response.status !== 200) {
+        throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
+    }
+} 
