@@ -16,8 +16,12 @@ const deviceCheck = new DeviceCheck(ApiHost.DEVELOPMENT);
 
 ### Querying a device
 ```
+const key = readFileSync('key.p8').toString();
+
+const jwt = jsonwebtoken.sign({}, key, { algorithm: 'ES256', keyid: 'AP00LNP89K', issuer: 'PJK0EZJ3I6' });
+
 try {
-    const queryResult = await deviceCheck.QueryDevice({ 
+    const queryResult = await deviceCheck.QueryDevice(jwt, { 
         device_token: 'aDeviceToken',
         // Optional, will be set as Date.now() if omitted
         timestamp: Date.now()
@@ -32,8 +36,12 @@ try {
 
 ### Updating the bits for a device
 ```
+const key = readFileSync('key.p8').toString();
+
+const jwt = jsonwebtoken.sign({}, key, { algorithm: 'ES256', keyid: 'AP00LNP89K', issuer: 'PJK0EZJ3I6' });
+
 try {
-    await deviceCheck.UpdateDevice({ 
+    await deviceCheck.UpdateDevice(jwt, { 
         device_token: 'aDeviceToken',
         // Optional, will be default to Date.now() if omitted
         timestamp: Date.now()
@@ -49,9 +57,13 @@ try {
 
 ### Validating a device token
 ```
+const key = readFileSync('key.p8').toString();
+
+const jwt = jsonwebtoken.sign({}, key, { algorithm: 'ES256', keyid: 'AP00LNP89K', issuer: 'PJK0EZJ3I6' });
+
 // Will throw if device token is invalid
 try {
-    await deviceCheck.ValidateDevice({ 
+    await deviceCheck.ValidateDevice(jwt, { 
         device_token: 'aDeviceToken',
         // Optional, will be default to Date.now() if omitted
         timestamp: Date.now()
