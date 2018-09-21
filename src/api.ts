@@ -1,3 +1,4 @@
+// (c) PepperHQ Limited - All Right Reserved
 import fetch from 'node-fetch';
 import uuid from 'uuid';
 

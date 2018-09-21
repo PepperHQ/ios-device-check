@@ -1,3 +1,4 @@
+// (c) PepperHQ Limited - All Right Reserved
 import * as api from "./api";
 
 export enum ApiHost {
