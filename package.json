@@ -1,7 +1,7 @@
 {
   "name": "device-check",
   "version": "1.0.0",
-  "description": "A Node.js client for the Apple device check API",
+  "description": "A Promise-based Node.js client for the Apple device check API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
