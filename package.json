@@ -1,6 +1,6 @@
 {
   "name": "device-check",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "description": "A Promise-based Node.js client for the Apple device check API",
   "main": "dist/index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PepperHQ/device-check.git"
+    "url": "git+https://github.com/PepperHQ/ios-device-check.git"
   },
   "keywords": [
     "device-check",
@@ -28,7 +28,7 @@
   ],
   "author": "Dominic Rathbone",
   "bugs": {
-    "url": "https://github.com/PepperHQ/device-check/issues"
+    "url": "https://github.com/PepperHQ/ios-device-check/issues"
   },
-  "homepage": "https://github.com/PepperHQ/device-check#readme"
+  "homepage": "https://github.com/PepperHQ/ios-device-check#readme"
 }
