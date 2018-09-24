@@ -44,7 +44,7 @@ export async function QueryDevice(host: string, jwt: string, payload: QueryDevic
         timestamp: payload.timestamp || Date.now()
     };
 
-    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), compress: true });
+    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
 
     if (response.status !== 200) {
         throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
@@ -80,7 +80,7 @@ export async function UpdateDevice(host: string, jwt: string, payload: UpdateDev
         timestamp: payload.timestamp || Date.now(),
     };
 
-    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), compress: true });
+    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
 
     if (response.status !== 200) {
         throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
@@ -105,7 +105,7 @@ export async function ValidateDevice(host: string, jwt: string, payload: Validat
         timestamp: payload.timestamp || Date.now()
     };
 
-    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body), compress: true });
+    const response = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
 
     if (response.status !== 200) {
         throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
