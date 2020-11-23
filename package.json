@@ -20,7 +20,7 @@
     "scripts": {
         "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "prepublishOnly": "rm -rf ./dist && ./node_modules/typescript/tsc"
+        "prepublishOnly": "rm -rf ./dist && ./node_modules/typescript/bin/tsc"
     },
     "repository": {
         "type": "git",
