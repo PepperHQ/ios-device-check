@@ -1,12 +1,7 @@
 // (c) PepperHQ Limited - All Right Reserved
-import fetch, { Request, Response } from 'node-fetch';
+import fetch, { Request } from 'node-fetch';
 import uuid from 'uuid';
-
-export class ApiError extends Error {
-    constructor(public req: Request, public res: Response | undefined, public wrappedError: Error) {
-        super(wrappedError.message);
-    }
-}
+import { ApiError } from './error';
 
 // API Documentation available at:
 // https://developer.apple.com/documentation/devicecheck/accessing_and_modifying_per-device_data
@@ -32,7 +27,7 @@ export interface QueryDeviceResult {
 
 // TODO: Find a way of using unknown with object typeguards
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function isQueryDeviceResult(result: any): result is QueryDeviceResult {
+export function isQueryDeviceResult(result: any): result is QueryDeviceResult {
     return typeof result.bit0 === 'boolean' &&
         typeof result.bit1 === 'boolean' &&
         typeof result.last_update_time === 'string';
