@@ -30,6 +30,8 @@ export interface QueryDeviceResult {
     last_update_time: string
 }
 
+// TODO: Find a way of using unknown with object typeguards
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isQueryDeviceResult(result: any): result is QueryDeviceResult {
     return typeof result.bit0 === 'boolean' &&
         typeof result.bit1 === 'boolean' &&
