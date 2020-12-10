@@ -57,7 +57,7 @@ export async function QueryDevice(host: string, jwt: string, payload: QueryDevic
             throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
         }
 
-        const responseBody = await response.json();
+        const responseBody = await response.clone().json();
 
         if (!isQueryDeviceResult(responseBody)) {
             throw new Error('Failed to parse response from device check api');
@@ -66,7 +66,7 @@ export async function QueryDevice(host: string, jwt: string, payload: QueryDevic
         return responseBody;
     } catch (err) {
         if (request) {
-            throw new ApiError(request, response?.clone(), err)
+            throw new ApiError(request, response, err)
         }
         throw err
     }
