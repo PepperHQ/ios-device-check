@@ -1,6 +1,6 @@
 {
     "name": "device-check",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "license": "MIT",
     "description": "A Promise-based Node.js client for the Apple device check API",
     "main": "dist/index.js",

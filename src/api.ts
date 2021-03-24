@@ -100,11 +100,12 @@ export async function UpdateDevice(host: string, jwt: string, payload: UpdateDev
         response = await fetch(request);
 
         if (response.status !== 200) {
-            throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
+            throw new Error(`Device check api returned ${response.status}: ${await response.clone().text()}`);
         }
+
     } catch (err) {
         if (request) {
-            throw new ApiError(request, response?.clone(), err)
+            throw new ApiError(request, response, err)
         }
         throw err
     }
@@ -135,11 +136,11 @@ export async function ValidateDevice(host: string, jwt: string, payload: Validat
         response = await fetch(request);
 
         if (response.status !== 200) {
-            throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
+            throw new Error(`Device check api returned ${response.status}: ${await response.clone().text()}`);
         }
     } catch (err) {
         if (request) {
-            throw new ApiError(request, response?.clone(), err)
+            throw new ApiError(request, response, err)
         }
         throw err
     }
