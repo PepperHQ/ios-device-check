@@ -54,7 +54,7 @@ export async function QueryDevice(host: string, jwt: string, payload: QueryDevic
         response = await fetch(request);
 
         if (response.status !== 200) {
-            throw new Error(`Device check api returned ${response.status}: ${await response.text()}`);
+            throw new Error(`Device check api returned ${response.status}: ${await response.clone().text()}`);
         }
 
         const responseBody = await response.clone().json();
