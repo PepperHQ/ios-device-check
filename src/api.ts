@@ -53,8 +53,11 @@ export async function QueryDevice(host: string, jwt: string, payload: QueryDevic
         request = new Request(url, { method: 'POST', headers, body: JSON.stringify(body) })
         response = await fetch(request);
 
-        if (response.status !== 200) {
-            throw new Error(`Device check api returned ${response.status}: ${await response.clone().text()}`);
+        const responseBodyText = await response.clone().text();
+
+        // Apple's API returns this text error with status 200 and application/json content type
+        if (response.status !== 200 || responseBodyText == 'Failed to find bit state') {
+            throw new Error(`Device check api returned ${response.status}: ${responseBodyText}`);
         }
 
         const responseBody = await response.clone().json();
